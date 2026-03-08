@@ -1,0 +1,17 @@
+<Container version="2">
+  <Name>ATGDocuTrace</Name>
+  <Repository>ghcr.io/YOURNAME/atgdocutrace</Repository>
+  <Registry>https://ghcr.io</Registry>
+  <Network>bridge</Network>
+  <MyIP></MyIP>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/YOURNAME/ATGDocuTrace</Support>
+  <Project>https://github.com/YOURNAME/ATGDocuTrace</Project>
+  <Overview>OCR document tracing and storage service built with PaddleOCR for Docker and Unraid.</Overview>
+  <Category>Productivity:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/docs</WebUI>
+
+  <Config Name="WebUI Port" Target="8080" Default="8080" Mode="tcp" Type="Port" Display="always" Required="true" Mask="false">Container Port: 8080</Config>
+  <Config Name="Data Storage" Target="/app/data" Default="/mnt/user/appdata/atgdocutrace" Mode="rw" Type="Path" Display="always" Required="true" Mask="false">Persistent OCR storage</Config>
+</Container>
