@@ -185,3 +185,29 @@ async def ocr_upload(file: UploadFile = File(...)) -> dict:
         "result_json_path": str(json_path),
         "text_file_path": str(text_path),
     }
+def store_blocks(db, job_id, page_num, ocr_result):
+
+    for line in ocr_result:
+        for block in line:
+
+            box = block[0]
+            text = block[1][0]
+            conf = block[1][1]
+
+            db_block = OCRTextBlock(
+                job_id=job_id,
+                page=page_num,
+                text=text,
+                confidence=conf,
+
+                x1=box[0][0],
+                y1=box[0][1],
+                x2=box[1][0],
+                y2=box[1][1],
+                x3=box[2][0],
+                y3=box[2][1],
+                x4=box[3][0],
+                y4=box[3][1],
+            )
+
+            db.add(db_block)
